@@ -1,25 +1,21 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { setAuthHeader } from "../utils/spotify";
 
 const Home = () => {
   const [newReleases, setNewReleases] = useState([]);
   useEffect(() => {
     (async () => {
+      setAuthHeader();
       const res = await axios.get(
         "https://api.spotify.com/v1/browse/new-releases?limit=20",
         {
           method: "GET",
-          headers: {
-            Authorization:
-              "Bearer BQDMxqCvWidIsq4H1yml_V2Wqjuy8B4aZfCuT-hx82T8yuaNoF_4iCjHNvpAr-E8Coja2umhTzsrU9bLOAjnUDT5ZEH1Gw25O-zGcEfZcicEYd64XHtkZmGC0pCeHagQU2V-aaewqkjRo2OlhOU",
-          },
         }
       );
       setNewReleases(res.data.albums.items);
     })();
   }, []);
-
-  console.log(newReleases);
 
   return (
     <React.Fragment>
