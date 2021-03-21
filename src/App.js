@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
@@ -28,7 +28,7 @@ function App() {
         dispatch({ type: "SET_USER", payload: user });
       });
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   console.log("user 🤘", user);
   console.log("token 🔑", token);
