@@ -1,13 +1,10 @@
 import React, { useEffect } from "react";
-import Navbar from "./components/Navbar";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
-import Search from "./components/Search";
-import Home from "./components/Home";
 import Login from "./components/Login";
 import { getTokenFromUrl } from "./utils/spotify";
 import { useDataLayerValue } from "./components/DataLayer";
 import SpotifyWebApi from "spotify-web-api-js";
+import Player from "./components/Player";
 
 const spotify = new SpotifyWebApi();
 
@@ -34,15 +31,7 @@ function App() {
   console.log("token 🔑", token);
   return (
     <div className="App">
-      {token ? (
-        <Router>
-          <Navbar />
-          <Route exact path="/" component={Home} />
-          <Route path="/search" component={Search} />
-        </Router>
-      ) : (
-        <Login />
-      )}
+      {token ? <Player spotify={spotify} /> : <Login />}
     </div>
   );
 }
