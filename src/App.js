@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import "./App.css";
-import Login from "./components/Login";
-import { getTokenFromUrl } from "./utils/spotify";
-import { useDataLayerValue } from "./components/DataLayer";
-import SpotifyWebApi from "spotify-web-api-js";
-import Player from "./components/Player";
+import React, { useEffect } from 'react';
+import './App.css';
+import Login from './components/Login';
+import { getTokenFromUrl } from './utils/spotify';
+import { useDataLayerValue } from './components/DataLayer';
+import SpotifyWebApi from 'spotify-web-api-js';
+import Player from './components/Player';
 
 const spotify = new SpotifyWebApi();
 
@@ -13,27 +13,23 @@ function App() {
 
   useEffect(() => {
     const hash = getTokenFromUrl();
-    window.location.hash = "";
+    window.location.hash = '';
     const _token = hash.access_token;
     if (_token) {
       // Dispatch SET_TOKEN action to set token into the context
-      dispatch({ type: "SET_TOKEN", payload: _token });
+      dispatch({ type: 'SET_TOKEN', payload: _token });
       spotify.setAccessToken(_token);
 
       spotify.getMe().then((user) => {
         // Dispatch SET_USER action to set token into the context
-        dispatch({ type: "SET_USER", payload: user });
+        dispatch({ type: 'SET_USER', payload: user });
       });
     }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
-  console.log("user 🤘", user);
-  console.log("token 🔑", token);
-  return (
-    <div className="App">
-      {token ? <Player spotify={spotify} /> : <Login />}
-    </div>
-  );
+  console.log('user 🤘', user);
+  console.log('token 🔑', token);
+  return <div className="App">{token ? <Player spotify={spotify} /> : <Login />}</div>;
 }
 
 export default App;

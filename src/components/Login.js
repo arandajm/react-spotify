@@ -1,9 +1,5 @@
-import React from "react";
-const {
-  REACT_APP_CLIENT_ID,
-  REACT_APP_AUTHORIZE_URL,
-  REACT_APP_REDIRECT_URL,
-} = process.env;
+import React from 'react';
+const { REACT_APP_CLIENT_ID, REACT_APP_AUTHORIZE_URL, REACT_APP_REDIRECT_URL } = process.env;
 
 const Login = () => {
   const handleLogin = () => {
@@ -11,10 +7,7 @@ const Login = () => {
   };
   return (
     <div className="login">
-      <img
-        src="https://1000marcas.net/wp-content/uploads/2019/12/Spotify-logotipo.jpg"
-        alt="logo-spotify"
-      />
+      <img src="https://1000marcas.net/wp-content/uploads/2019/12/Spotify-logotipo.jpg" alt="logo-spotify" />
       <button className="btn btn-outline-success" onClick={handleLogin}>
         Login to Spotify
       </button>
