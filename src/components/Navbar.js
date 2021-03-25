@@ -1,19 +1,13 @@
-import React from "react";
-import logo from "../logo.svg";
-import { NavLink, Link } from "react-router-dom";
+import React from 'react';
+import logo from '../logo.svg';
+import { NavLink, Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
     <header>
       <nav className="navbar navbar-expand-md navbar-dark bg-dark">
         <Link className="navbar-brand" to="/">
-          <img
-            src={logo}
-            width="100"
-            height="30"
-            className="d-inline-block align-top"
-            alt="logo"
-          />
+          <img src={logo} width="100" height="30" className="d-inline-block align-top" alt="logo" />
         </Link>
         <button
           className="navbar-toggler"
