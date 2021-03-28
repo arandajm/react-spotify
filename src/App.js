@@ -24,6 +24,12 @@ function App() {
         // Dispatch SET_USER action to set token into the context
         dispatch({ type: "SET_USER", payload: user });
       });
+
+      spotify.getUserPlaylists().then((playlists) => {
+        console.log({ playlists });
+        // Dispatch SET_USER_PLAYLISTS action to set token into the context
+        dispatch({ type: "SET_USER_PLAYLISTS", payload: playlists });
+      });
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
